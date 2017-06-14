@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OnlinePieShop.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using BethanysPieShop.Models;
 
 namespace OnlinePieShop
 {
@@ -29,7 +31,13 @@ namespace OnlinePieShop
             //services.AddTransient new obj whenever called
             services.AddTransient<IPieRepository, PieRepository>(); 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ShoppingCart>(sp=>ShoppingCart.GetCart(sp));
             services.AddMvc();
+
+
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +46,9 @@ namespace OnlinePieShop
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
+
             DbInitializer.Seed(app);
         }
     }   
