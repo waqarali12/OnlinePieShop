@@ -3,7 +3,7 @@ C:\Projects\core\OnlinePieShop\OnlinePieShop\bin\Debug\netcoreapp1.1\OnlinePieSh
 C:\Projects\core\OnlinePieShop\OnlinePieShop\bin\Debug\netcoreapp1.1\OnlinePieShop.runtimeconfig.dev.json
 C:\Projects\core\OnlinePieShop\OnlinePieShop\bin\Debug\netcoreapp1.1\OnlinePieShop.dll
 C:\Projects\core\OnlinePieShop\OnlinePieShop\bin\Debug\netcoreapp1.1\OnlinePieShop.pdb
-C:\Projects\core\OnlinePieShop\OnlinePieShop\obj\Debug\netcoreapp1.1\OnlinePieShop.csprojResolveAssemblyReference.cache
 C:\Projects\core\OnlinePieShop\OnlinePieShop\obj\Debug\netcoreapp1.1\OnlinePieShop.AssemblyInfo.cs
 C:\Projects\core\OnlinePieShop\OnlinePieShop\obj\Debug\netcoreapp1.1\OnlinePieShop.dll
 C:\Projects\core\OnlinePieShop\OnlinePieShop\obj\Debug\netcoreapp1.1\OnlinePieShop.pdb
+C:\Projects\core\OnlinePieShop\OnlinePieShop\obj\Debug\netcoreapp1.1\OnlinePieShop.csprojResolveAssemblyReference.cache

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OnlinePieShop.Models;
 using OnlinePieShop.ViewModels;
@@ -18,17 +16,39 @@ namespace OnlinePieShop.Controllers
         public PieController(IPieRepository pieRepository, ICategoryRepository categoryRepository)
         {
             _pieRepository = pieRepository;
-            categoryRepository = _categoryRepository;
+            _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category)
         {
-            PieListViewModel pieListViewModel = new PieListViewModel()
+            IEnumerable<Pie> pies;
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(category))
             {
-                Pies = _pieRepository.Pies,
-                CurrentCategory = "Cheese Cake!"
-            };  
-            return View(pieListViewModel);
+                pies = _pieRepository.Pies.OrderBy(p => p.PieId);
+                currentCategory = "All Pies";
+            }
+            else
+            {
+                pies = _pieRepository.Pies.Where(p => p.Category.CategoryName == category)
+                   .OrderBy(p => p.PieId);
+                currentCategory = category; //_categoryRepository.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryName;
+            }
+
+            return View(new PieListViewModel
+            {
+                Pies = pies,
+                CurrentCategory = currentCategory
+            });
+        }
+
+        public IActionResult Details(int id)
+        {
+            var pie = _pieRepository.GetPieById(id);
+            if (pie == null)
+                return NotFound();
+            return View(pie);
         }
     }
 }
